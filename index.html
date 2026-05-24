@@ -533,7 +533,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         const testimonialsData = [
             { 
                 "name": "farhan",
-                "event": "Justdial Review • 27 June 2019",
+                "event": "Justdial Review â€¢ 27 June 2019",
                 "quote": "Good",
                 "rating": 4,
                 "image": "",
@@ -541,7 +541,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             },
             { 
                 "name": "faijas",
-                "event": "Justdial Review • 16 March 2020",
+                "event": "Justdial Review â€¢ 16 March 2020",
                 "quote": "Super service",
                 "rating": 5,
                 "image": "",
@@ -549,7 +549,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             },
             { 
                 "name": "anvarsh",
-                "event": "Justdial Review • 27 February 2019",
+                "event": "Justdial Review â€¢ 27 February 2019",
                 "quote": "Excellent & tasty",
                 "rating": 5,
                 "image": "",
@@ -701,8 +701,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             const eventType = document.getElementById("event-type").value || "Not specified";
             const guestCount = document.getElementById("guest-count").value.trim() || "Not specified";
             const eventMessage = document.getElementById("event-message").value.trim() || "No extra details";
-            const whatsappMessage = "Hello Positive Caterers & Events,%0A%0AI would like a quote.%0A%0AName: " + encodeURIComponent(fullName) + "%0APhone: " + encodeURIComponent(phoneNumber) + "%0AEmail: " + encodeURIComponent(emailAddress) + "%0AEvent Type: " + encodeURIComponent(eventType) + "%0AGuests: " + encodeURIComponent(guestCount) + "%0AMessage: " + encodeURIComponent(eventMessage);
-            window.open("https://wa.me/919847002774?text=" + whatsappMessage, "_blank", "noopener,noreferrer");
+            const whatsappMessage = [
+                "Hello Positive Caterers & Events,",
+                "",
+                "I would like a quote.",
+                "",
+                "Name: " + fullName,
+                "Phone: " + phoneNumber,
+                "Email: " + emailAddress,
+                "Event Type: " + eventType,
+                "Guests: " + guestCount,
+                "Message: " + eventMessage
+            ].join("\n");
+            window.open("https://wa.me/919847002774?text=" + encodeURIComponent(whatsappMessage), "_blank", "noopener,noreferrer");
             this.reset();
         });
 
@@ -714,7 +725,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             const feedbackMessage = document.getElementById("feedback-message").value.trim();
             const newReview = {
                 name: feedbackName,
-                event: "Customer Feedback • Just Now",
+                event: "Customer Feedback â€¢ Just Now",
                 quote: feedbackMessage,
                 rating: Number(feedbackRating),
                 image: "",
@@ -724,8 +735,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             storedReviews.unshift(newReview);
             saveStoredReviews(storedReviews);
             refreshTestimonials();
-            const reviewMessage = "Hello Positive Caterers & Events,%0A%0AHere is my feedback.%0A%0AName: " + encodeURIComponent(feedbackName) + "%0ARating: " + encodeURIComponent(feedbackRating + " Stars") + "%0AMessage: " + encodeURIComponent(feedbackMessage);
-            window.open("https://wa.me/919847002774?text=" + reviewMessage, "_blank", "noopener,noreferrer");
+            const reviewMessage = [
+                "Hello Positive Caterers & Events,",
+                "",
+                "Here is my feedback.",
+                "",
+                "Name: " + feedbackName,
+                "Rating: " + feedbackRating + " Stars",
+                "Message: " + feedbackMessage
+            ].join("\n");
+            window.open("https://wa.me/919847002774?text=" + encodeURIComponent(reviewMessage), "_blank", "noopener,noreferrer");
             document.getElementById("testimonials").scrollIntoView({ behavior: "smooth", block: "start" });
             this.reset();
         });
